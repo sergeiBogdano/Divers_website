@@ -1,0 +1,43 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Оставить заявку{% endblock %}
+
+{% block content %}
+{% load form_tags %}
+<h1 class="mt-5 mb-4 text-center animate__animated animate__fadeInDown">Оставьте свою заявку</h1>
+
+{% if messages %}
+    <div class="alert alert-danger animate__animated animate__shakeX" role="alert">
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
+
+<form method="post" class="mt-4 animate__animated animate__fadeInUp">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="id_name">Имя:</label>
+        {{ form.name.errors }}
+        {{ form.name|add_class:"form-control" }}
+    </div>
+    <div class="form-group">
+        <label for="id_phone_number">Номер телефона:</label>
+        {{ form.phone_number.errors }}
+        {{ form.phone_number|add_class:"form-control" }}
+    </div>
+    <div class="form-group">
+        <label for="id_email">Email:</label>
+        {{ form.email.errors }}
+        {{ form.email|add_class:"form-control" }}
+    </div>
+    <div class="form-group">
+        <label for="id_message">Сообщение:</label>
+        {{ form.message.errors }}
+        {{ form.message|add_class:"form-control" }}
+    </div>
+    <button type="submit" class="btn btn-primary btn-block animate__animated animate__pulse animate__infinite">Отправить</button>
+</form>
+{% endblock %}

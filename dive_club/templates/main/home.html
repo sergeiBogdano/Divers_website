@@ -1,0 +1,31 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+    <h1 class="display-4 animate__animated animate__fadeInDown">Добро пожаловать в наш дайверский клуб!</h1>
+    <p class="lead animate__animated animate__fadeInUp animate__delay-1s">Узнайте больше о наших услугах и оставьте заявку на участие.</p>
+    <a class="btn btn-primary btn-lg animate__animated animate__pulse animate__infinite animate__delay-2s" href="{% url 'application_form' %}" role="button">Оставить заявку</a>
+</div>
+
+<div class="container mt-5">
+    {% for item in content %}
+    <div class="card mb-4" style="max-width: 800px; margin: 0 auto;">
+        <div class="card-body">
+            <h2 class="card-title">{{ item.title }}</h2>
+            <p class="card-text">{{ item.content }}</p>
+            {% if item.images.all %}
+            <div class="gallery d-flex flex-wrap">
+                {% for image in item.images.all %}
+                <div class="gallery-item" style="{% if forloop.first and item.images.count > 1 %}flex: 2;{% else %}flex: 1;{% endif %}">
+                    <img src="{{ image.image.url }}" alt="{{ image.caption }}" class="img-thumbnail">
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

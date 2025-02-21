@@ -1,0 +1,14 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Спасибо{% endblock %}
+
+{% block content %}
+{% if messages %}
+    {% for message in messages %}
+        <h1 class="animate__animated animate__zoomIn">{{ message }}</h1>
+    {% endfor %}
+{% else %}
+    <h1 class="animate__animated animate__zoomIn">Спасибо!</h1>
+{% endif %}
+<p class="animate__animated animate__fadeIn animate__delay-1s">Ваша заявка принята. Мы свяжемся с вами в ближайшее время.</p>
+{% endblock %}
