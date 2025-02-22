@@ -7,7 +7,11 @@ SECRET_KEY = 'django-insecure-be5t9&&88j!91&%cjdp#@a6a6kly_2l=fs^#d3%)9#v)39v)g2
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'sergeii33.pythonanywhere.com',  # Домен PythonAnywhere
+    'localhost',  # Для локальной разработки
+    '127.0.0.1',  # Для локальной разработки
+]
 
 
 INSTALLED_APPS = [
